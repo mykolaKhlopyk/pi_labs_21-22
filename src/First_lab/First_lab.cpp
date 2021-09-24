@@ -1,13 +1,17 @@
-// First_lab.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
-
 #include <cassert>
+#include <vector>
+#include <set>
+#include <map>
+#include <stdio.h>   
+#include <stdlib.h>   
+#include <time.h>
 
 class Unfair_dice
 {
 public:
+	
 	Unfair_dice(int number_of_sides, double* probability_for_side) {
 		assert(number_of_sides, "Negative number of sides");
 		this->number_of_sides = number_of_sides;
@@ -22,10 +26,42 @@ public:
 		}
 		assert(abs(sum_for_checking - 1) < 0.0001, "Sum of probability doesn't be equal to 1");
 	};
+
+	Unfair_dice(const Unfair_dice& other) {
+		this->number_of_sides = other.number_of_sides;
+		this->probability_for_side = new double[other.number_of_sides];
+		for (int i = 0; i < this->number_of_sides; i++)
+		{
+			this->probability_for_side[i] = other.probability_for_side[i];
+		}
+	}
+	
+	Unfair_dice operator = (const Unfair_dice& other) {
+		this->number_of_sides = other.number_of_sides;
+		this->probability_for_side = new double[other.number_of_sides];
+		for (int i = 0; i < this->number_of_sides; i++)
+		{
+			this->probability_for_side[i] = other.probability_for_side[i];
+		}
+	}
+
 	~Unfair_dice() {
 		delete[] probability_for_side;
 	};
-
+	int get_number() {
+		return number_of_sides;
+	}
+	double* get_probability_for_side() {
+		return probability_for_side;
+	}
+	void print() {
+		std::cout << " n = " << this->number_of_sides << ", probability = {";
+		for (int i = 0; i < this->number_of_sides - 1; i++)
+		{
+			std::cout << " p_" << i << " = " << this->probability_for_side[i] << ",";
+		}
+		std::cout << " p_" << (this->number_of_sides - 1) << " = " << this->probability_for_side[this->number_of_sides - 1] << "}" << std::endl;
+	}
 private:
 	int number_of_sides;
 	double* probability_for_side;
@@ -34,18 +70,5 @@ private:
 
 int main()
 {
-    
-    std::cout << "Hello World!";
-
+	
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
