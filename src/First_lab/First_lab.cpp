@@ -68,7 +68,30 @@ private:
 };
 
 
+Unfair_dice make_random_dice() {
+
+	int possible_numbers[] = { 2,4,6,8,10,12,20 };
+	int n = possible_numbers[rand() % 7];
+	double* probabilities = new double[n];
+	probabilities[n - 1] = 1.0;
+	for (int i = 0; i < n - 1; i++)
+	{
+		probabilities[i] = (rand() % 100) / (n * 100.0);
+		probabilities[n - 1] -= probabilities[i];
+	}
+	Unfair_dice new_dice(n, probabilities);
+	delete[]probabilities;
+
+	return new_dice;
+}
+
+
 int main()
 {
-	
+	srand(time(NULL));
+	Unfair_dice a = make_random_dice();
+	Unfair_dice b = make_random_dice();
+
+	a.print();
+	b.print();
 }
