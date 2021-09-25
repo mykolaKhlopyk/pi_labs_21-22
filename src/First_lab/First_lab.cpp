@@ -67,7 +67,6 @@ private:
 	double* probability_for_side;
 };
 
-
 Unfair_dice make_random_dice() {
 
 	int possible_numbers[] = { 2,4,6,8,10,12,20 };
@@ -93,7 +92,6 @@ Unfair_dice make_random_dice() {
 
 	return new_dice;
 }
-
 void find_all_combination_sum_recursion(std::map<int, double>& result, std::vector <Unfair_dice>& dices, int sum = 0, double properties = 1, int current_index = 0) {
 	if (current_index == dices.size())
 	{
@@ -132,10 +130,59 @@ std::map <int, double> find_all_combination_sum(std::vector <Unfair_dice> &dices
 		}
 	}
 	return result;
-
 }
 
-
+void compare_compare_two_sets_of_dices(std::vector <Unfair_dice>& dices_1, std::vector <Unfair_dice>& dices_2) {
+	std::map<int, double> sums_1 = find_all_combination_sum(dices_1);
+	std::map<int, double> sums_2 = find_all_combination_sum(dices_2);
+	std::map<int, double>::iterator iter_1 = sums_1.begin(), iter_2 = sums_2.begin();
+	int e = 0;
+	while ((iter_1 != sums_1.end()) || (iter_2 != sums_2.end())) {
+		if ((iter_1 == sums_1.end()))
+		{
+			std::cout << "sum = " << iter_2->first << " has higer on " << iter_2->second << " probability in second set" << std::endl;
+			iter_2++;
+			continue;
+		}
+		if (iter_2 == sums_2.end() )
+		{
+			std::cout << "sum = " << iter_1->first << " has higer on " << iter_1->second << " probability in first set" << std::endl;
+			iter_1++;
+			continue;
+		}
+		if (iter_1->first > iter_2->first)
+		{
+			std::cout << "sum = " << iter_2->first << " has higer on " << iter_2->second << " probability in second set" << std::endl;
+			iter_2++;
+			continue;
+		}
+		if (iter_1->first < iter_2->first)
+		{
+			std::cout << "sum = " << iter_1->first << " has higer on " << iter_1->second << " probability in first set" << std::endl;
+			iter_1++;
+			continue;
+		}
+		if (iter_1->first==iter_2->first)
+		{
+			if (iter_1->second==iter_2->second)
+			{
+				std::cout << "sum = " << iter_1->first << " has same probability in two sets"<<std::endl;
+			}
+			else {
+				std::cout << "sum = " << iter_1->first << " has higer on " << abs(iter_1->second - iter_2->second) << " probability in ";
+				if (iter_1->second > iter_2->second)
+				{
+					std::cout << "first set"<<std::endl;
+				}
+				else {
+					std::cout << "second set" << std::endl;
+				}
+			}
+			iter_1++;
+			iter_2++;
+		}
+	}
+}
 
 
 int main()
@@ -143,14 +190,20 @@ int main()
 	srand(time(NULL));
 	Unfair_dice a = make_random_dice();
 	Unfair_dice b = make_random_dice();
-	//Unfair_dice c = make_random_dice();
-	//Unfair_dice d = make_random_dice();
+	Unfair_dice c = make_random_dice();
+	Unfair_dice d = make_random_dice();
 
 	a.print();
 	b.print();
-	//c.print();
-	//d.print();
+	c.print();
+	d.print();
 
-	std::vector<Unfair_dice> array = { a,b };
-	find_all_combination_sum(array, 1);
+	std::vector<Unfair_dice> array_1 = { a,b };
+	std::vector<Unfair_dice> array_2 = { c,d };
+	find_all_combination_sum(array_1, 1);
+	std::cout << std::endl;
+	find_all_combination_sum(array_2, 1);
+	std::cout << std::endl;
+	compare_compare_two_sets_of_dices(array_1, array_2);
+
 }
