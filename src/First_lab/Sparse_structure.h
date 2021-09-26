@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cassert>
+#include <vector>
 
 template <typename T>
 class Node {
@@ -35,7 +36,7 @@ public:
 		}
 	}
 	void add(T data, int index) {
-		assert(index < this->n, "Incorrect element's index");
+		assert(((index < this->n) && index>=0), "Incorrect element's index");
 		Node<T>* current = this->root;
 		if (!this->root)
 		{
@@ -62,6 +63,34 @@ public:
 			}
 			current->next = new  Node<T>(data, index);
 		}
+	}
+	T operator[](int index) {
+		assert(((index < this->n) && index >= 0), "Incorrect element's index");
+		Node<T>*current = this->root;
+		while (current) {
+			if (current->pos==index)
+			{
+				return current->data;
+			}
+			if (current->pos>index)
+			{
+				return 0;
+			}
+			current = current->next;
+		}
+		return 0;
+	}
+	std::vector<int> positions_by_element(int data) {
+		std::vector<int> result(0);
+		Node<T>* current = this->root;
+		while (current) {
+			if (current->data==data)
+			{
+				result.push_back(current->pos);
+			}
+			current = current->next;
+		}
+		return result;
 	}
 
 	void print() {
