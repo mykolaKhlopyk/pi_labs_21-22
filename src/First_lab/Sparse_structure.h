@@ -110,7 +110,103 @@ public:
 		}
 		std::cout << "\n";
 	}
-private:
+protected:
 	Node<T>* root;
 	int n;
+};
+
+template<typename T>
+class Sparse_matrix
+{
+public:
+	Sparse_matrix() {
+		this->m = 0;
+		this->n = 0;
+		this->root = nullptr;
+	}
+	Sparse_matrix(int m, int n):Sparse_matrix() {
+		this->m = m;
+		this->n = n;
+	}
+	~Sparse_matrix() {
+		Node<T>* current = this->root;
+		while (current) {
+			Node<T>* node_for_deleting = current;
+			current = current->next;
+			delete node_for_deleting;
+		}
+	}
+	
+	void add_to_matrix(T data, int i, int j) {
+		assert((i < m& j < n& i >= 0 & j >= 0), "Position is incorrect");
+		int index = i * this->n + j;
+		Node<T>* current = this->root;
+		if (!this->root)
+		{
+			this->root = new Node<T>(data, index);
+		}
+		else if (index < current->pos) {
+			this->root = new Node<T>(data, index);
+			this->root->next = current;
+		}
+		else {
+			while (current->next) {
+				if (current->next->pos == index)
+				{
+					current->next->data = data;
+					return;
+				}
+				else if (current->next->pos > index) {
+					Node<T>* new_node = new Node<T>(data, index);
+					new_node->next = current->next;
+					current->next = new_node;
+					return;
+				}
+				current = current->next;
+			}
+			current->next = new  Node<T>(data, index);
+		}
+	}
+	T get(int i, int j){
+		int index = i * this->n + j;
+		assert(((index < this->n) && index >= 0), "Incorrect element's index");
+		Node<T>* current = this->root;
+		while (current) {
+			if (current->pos == index)
+			{
+				return current->data;
+			}
+			if (current->pos > index)
+			{
+				return 0;
+			}
+			current = current->next;
+		}
+		return 0;
+	}
+	void print() {
+		Node<T>* current = this->root;
+		for (int i = 0; i < this->n * this->m; i++)
+		{
+			if (i%n==0 && i>0)
+			{
+				std::cout << std::endl;
+			}
+			if (current)
+			{
+				if (current->pos == i)
+				{
+					std::cout << current->data << "\t";
+					current = current->next;
+					continue;
+				}
+			}
+			std::cout << 0 << "\t";
+		}
+		std::cout << "\n";
+	}
+private:
+	int m;
+	int n;
+	Node<T>* root;
 };
