@@ -247,6 +247,92 @@ public:
 		}
 		std::cout << "\n";
 	}
+
+	Sparse_matrix operator+ (const Sparse_matrix& added) {//this + added
+		Sparse_matrix<T> sum(this->m, this->n);
+		Node<T>* current = nullptr;
+		Node<T>* current_A = this->root;
+		Node<T>* current_B = added.root;
+
+		if (this->m == added.m && this->n == added.n)
+		{
+			while (current_A || current_B) {
+				if (current_A && current_B)
+				{
+					if (current_A->pos == current_B->pos) {
+						if (sum.root)
+						{
+							current->next = new Node<T>(current_A->data + current_B->data, current_A->pos);;
+							current = current->next;
+						}
+						else {
+							sum.root = new Node<T>(current_A->data + current_B->data, current_A->pos);
+							current = sum.root;
+						}
+						current_A = current_A->next;
+						current_B = current_B->next;
+					}
+					else if (current_A->pos > current_B->pos) {
+						if (sum.root)
+						{
+							current->next = new Node<T>(current_B->data, current_B->pos);;
+							current = current->next;
+						}
+						else {
+							sum.root = new Node<T>(current_B->data, current_B->pos);
+							current = sum.root;
+						}
+						current_B = current_B->next;
+					}
+					else {
+						if (sum.root)
+						{
+							current->next = new Node<T>(current_A->data, current_A->pos);;
+							current = current->next;
+						}
+						else {
+							sum.root = new Node<T>(current_A->data, current_A->pos);
+							current = sum.root;
+						}
+						current_A = current_A->next;
+					}
+					continue;
+				}
+				if (current_A)
+				{
+					if (sum.root)
+					{
+						current->next = new Node<T>(current_A->data, current_A->pos);;
+						current = current->next;
+					}
+					else {
+						sum.root = new Node<T>(current_A->data, current_A->pos);
+						current = sum.root;
+					}
+					current_A = current_A->next;
+					continue;
+				}
+				if (current_B)
+				{
+					if (sum.root)
+					{
+						current->next = new Node<T>(current_B->data, current_B->pos);;
+						current = current->next;
+					}
+					else {
+						sum.root = new Node<T>(current_B->data, current_B->pos);
+						current = sum.root;
+					}
+					current_B = current_B->next;
+					continue;
+				}
+			}
+			return sum;
+		}
+		else {
+			return sum;
+		}
+	}
 private:
 	int m;
 	int n;
