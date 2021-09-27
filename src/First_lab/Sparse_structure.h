@@ -124,7 +124,7 @@ public:
 		this->n = 0;
 		this->root = nullptr;
 	}
-	Sparse_matrix(int m, int n):Sparse_matrix() {
+	Sparse_matrix(int m, int n) :Sparse_matrix() {
 		this->m = m;
 		this->n = n;
 	}
@@ -136,7 +136,7 @@ public:
 			delete node_for_deleting;
 		}
 	}
-	
+
 	Sparse_matrix(const Sparse_matrix& copy) {
 		this->n = copy.n;
 		this->m = copy.m;
@@ -209,9 +209,9 @@ public:
 			current->next = new  Node<T>(data, index);
 		}
 	}
-	T get(int i, int j){
+	T get(int i, int j) {
 		int index = i * this->n + j;
-		assert(((index < this->n) && index >= 0), "Incorrect element's index");
+		assert(((index < this->n* this->m) && index >= 0), "Incorrect element's index");
 		Node<T>* current = this->root;
 		while (current) {
 			if (current->pos == index)
@@ -230,7 +230,7 @@ public:
 		Node<T>* current = this->root;
 		for (int i = 0; i < this->n * this->m; i++)
 		{
-			if (i%n==0 && i>0)
+			if (i % n == 0 && i > 0)
 			{
 				std::cout << std::endl;
 			}
@@ -248,9 +248,10 @@ public:
 		std::cout << "\n";
 	}
 
-	Sparse_matrix operator+ (const Sparse_matrix& added) {//this + added
+	Sparse_matrix operator+ (Sparse_matrix& added) {//this + added
 		Sparse_matrix<T> sum(this->m, this->n);
-		Node<T>* current = nullptr;
+		//fast method
+		/*Node<T>* current = nullptr;
 		Node<T>* current_A = this->root;
 		Node<T>* current_B = added.root;
 
@@ -331,8 +332,47 @@ public:
 		}
 		else {
 			return sum;
+		}*/
+
+		//short code
+		for (int i = 0; i < this->m; i++)
+		{
+			for (int j = 0; j < this->n; j++)
+			{
+				T a = this->get(i, j);
+				T b = added.get(i, j);
+				if ((a + b) != 0)
+				{
+					sum.add_to_matrix(a + b, i, j);
+				}
+			}
 		}
+		return sum;
 	}
+	Sparse_matrix operator* (Sparse_matrix& multiplier) {//this + added
+		Sparse_matrix<T> result(this->m, this->n);
+		int a = 0;
+		for (int i = 0; i < this->m; i++) {
+			for (int j = 0; j < multiplier.n; j++) {
+				a = 0;
+
+				for (int k = 0; k < multiplier.n; k++) {
+					a += this->get(i, k) * multiplier.get(k, j);
+				}
+
+				if (a!=0)
+				{
+					result.add_to_matrix(a, i, j);
+				}
+			}
+
+
+		}
+		return result;
+	}
+
+	
+
 private:
 	int m;
 	int n;
