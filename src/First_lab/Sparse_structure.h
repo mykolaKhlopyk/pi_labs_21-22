@@ -46,6 +46,9 @@ public:
 			this->root = new Node<T>(data, index);
 			this->root->next = current;
 		}
+		else if (index == current->pos) {
+			current->data = data;
+		}
 		else {
 			while (current->next) {
 				if (current->next->pos == index)
@@ -180,7 +183,7 @@ public:
 		return *this;
 	}
 	void add_to_matrix(T data, int i, int j) {
-		assert((i < m& j < n& i >= 0 & j >= 0), "Position is incorrect");
+		assert((i < m & j < n & i >= 0 & j >= 0), "Position is incorrect");
 		int index = i * this->n + j;
 		Node<T>* current = this->root;
 		if (!this->root)
@@ -190,6 +193,9 @@ public:
 		else if (index < current->pos) {
 			this->root = new Node<T>(data, index);
 			this->root->next = current;
+		}
+		else if (index == current->pos) {
+			current->data = data;
 		}
 		else {
 			while (current->next) {
@@ -230,7 +236,7 @@ public:
 		Node<T>* current = this->root;
 		for (int i = 0; i < this->n * this->m; i++)
 		{
-			if (i % n == 0 && i > 0)
+			if (i % this->n == 0 && i > 0)
 			{
 				std::cout << std::endl;
 			}
@@ -370,7 +376,16 @@ public:
 		}
 		return result;
 	}
-
+	Sparse_matrix transitive() {
+		Sparse_matrix<T> result(this->n, this->m);
+		Node<T>* current = this->root;
+		while (current)
+		{
+			result.add_to_matrix(current->data, current->pos % this->n,current->pos/this->n );
+			current = current->next;
+		}
+		return result;
+	}
 	
 
 private:
