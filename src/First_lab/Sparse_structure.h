@@ -137,6 +137,48 @@ public:
 		}
 	}
 	
+	Sparse_matrix(const Sparse_matrix& copy) {
+		this->n = copy.n;
+		this->m = copy.m;
+		this->root = nullptr;
+		if (!copy.root)
+		{
+			return;
+		}
+
+		Node<T>* copy_current = copy.root;
+		this->root = new Node<T>(copy.root->data, copy.root->pos);
+		Node<T>* new_current = this->root;
+
+		while (copy_current->next) {
+			new_current->next = new Node<T>(copy_current->next->data, copy_current->next->pos);
+
+			copy_current = copy_current->next;
+			new_current = new_current->next;
+		}
+
+	}
+	Sparse_matrix operator= (const Sparse_matrix& copy) {
+		this->n = copy.n;
+		this->m = copy.m;
+		this->root = nullptr;
+		if (!copy.root)
+		{
+			return *this;
+		}
+
+		Node<T>* copy_current = copy.root;
+		this->root = new Node<T>(copy.root->data, copy.root->pos);
+		Node<T>* new_current = this->root;
+
+		while (copy_current->next) {
+			new_current->next = new Node<T>(copy_current->next->data, copy_current->next->pos);
+
+			copy_current = copy_current->next;
+			new_current = new_current->next;
+		}
+		return *this;
+	}
 	void add_to_matrix(T data, int i, int j) {
 		assert((i < m& j < n& i >= 0 & j >= 0), "Position is incorrect");
 		int index = i * this->n + j;
