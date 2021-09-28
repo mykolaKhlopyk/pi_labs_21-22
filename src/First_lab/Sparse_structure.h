@@ -95,7 +95,6 @@ public:
 		}
 		return result;
 	}
-
 	void print() {
 		Node<T> *current = this->root;
 		for (int i = 0; i < this->n; i++)
@@ -112,6 +111,12 @@ public:
 			std::cout << 0 << "\t";
 		}
 		std::cout << "\n";
+	}
+	int get_size() {
+		return this->n;
+	}
+	Node<T>* get_root() {
+		return this->root;
 	}
 protected:
 	Node<T>* root;
@@ -356,13 +361,13 @@ public:
 		return sum;
 	}
 	Sparse_matrix operator* (Sparse_matrix& multiplier) {//this + added
-		Sparse_matrix<T> result(this->m, this->n);
+		Sparse_matrix<T> result(this->m, multiplier.n);
 		int a = 0;
 		for (int i = 0; i < this->m; i++) {
 			for (int j = 0; j < multiplier.n; j++) {
 				a = 0;
 
-				for (int k = 0; k < multiplier.n; k++) {
+				for (int k = 0; k < multiplier.m; k++) {
 					a += this->get(i, k) * multiplier.get(k, j);
 				}
 
@@ -387,7 +392,15 @@ public:
 		return result;
 	}
 	
-
+	int get_m() {
+		return this->m;
+	}
+	int get_n() {
+		return this->n;
+	}
+	Node<T>* get_root() {
+		return this->root;
+	}
 private:
 	int m;
 	int n;
