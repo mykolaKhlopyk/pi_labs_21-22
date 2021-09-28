@@ -11,7 +11,10 @@
 class Unfair_dice
 {
 public:
-
+	Unfair_dice() {
+		number_of_sides = 0;
+		probability_for_side = new double[0];
+	}
 	Unfair_dice(int number_of_sides, double* probability_for_side) {
 		assert(number_of_sides, "Negative number of sides");
 		this->number_of_sides = number_of_sides;
@@ -43,7 +46,18 @@ public:
 		{
 			this->probability_for_side[i] = other.probability_for_side[i];
 		}
+		return *this;
 	}
+	Unfair_dice ( Unfair_dice& other) {
+		this->number_of_sides = other.number_of_sides;
+		this->probability_for_side = new double[other.number_of_sides];
+		for (int i = 0; i < this->number_of_sides; i++)
+		{
+			this->probability_for_side[i] = other.probability_for_side[i];
+		}
+		
+	}
+
 
 	~Unfair_dice() {
 		delete[] probability_for_side;
