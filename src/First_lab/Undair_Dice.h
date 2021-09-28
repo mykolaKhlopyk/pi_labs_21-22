@@ -125,7 +125,7 @@ std::map <int, double> find_all_combination_sum(std::vector <Unfair_dice>& dices
 	if (print)
 	{
 		std::map <int, double> ::iterator it = result.begin();
-		for (int i = 0; it != result.end(); it++, i++) {  // выводим их
+		for (int i = 0; it != result.end(); it++, i++) {  // ГўГ»ГўГ®Г¤ГЁГ¬ ГЁГµ
 			std::cout << i << ") sum " << it->first << ", probability " << it->second << std::endl;
 		}
 	}
