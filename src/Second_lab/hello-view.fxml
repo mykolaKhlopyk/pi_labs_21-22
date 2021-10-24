@@ -86,7 +86,7 @@
             <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="7.0" visible="false" />
          </children>
       </VBox>
-      <Pane layoutX="150.0" layoutY="-1.0" prefHeight="62.0" prefWidth="551.0" style="-fx-background-color: #262626;">
+      <Pane fx:id="pane_for_moving_window" layoutX="150.0" layoutY="-1.0" prefHeight="62.0" prefWidth="551.0" style="-fx-background-color: #262626;">
          <children>
             <Label layoutX="262.0" layoutY="23.0" textFill="WHITE">
                <font>

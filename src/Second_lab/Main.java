@@ -13,10 +13,13 @@ import java.util.Scanner;
 public class Main extends Application {
 
     static ArrayList<Note> main_list_of_notes=new ArrayList<>();
-
+    private double xoffset;
+    private double yoffset;
+    static public Stage main_stage;
     @Override
     public void start(Stage stage) throws IOException {
-
+        stage.initStyle(StageStyle.UNDECORATED);
+        main_stage=stage ;
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("notes.txt")))
         {
             main_list_of_notes=((ArrayList<Note>)ois.readObject());
@@ -31,9 +34,11 @@ public class Main extends Application {
 
 
 
+
         stage.setTitle("Notes");
         stage.setScene(scene);
         stage.show();
+
 
     }
 

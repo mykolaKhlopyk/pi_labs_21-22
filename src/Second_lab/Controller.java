@@ -21,6 +21,10 @@ import javafx.scene.layout.Pane;
 
 public class Controller {
 
+    private double xoffset;
+    private double yoffset;
+
+
     public int number_of_note_for_showing;
     final String path = "notes.txt";
     private boolean in_main_list;
@@ -82,6 +86,9 @@ public class Controller {
     private Pane pane_view_node;
 
     @FXML
+    private Pane pane_for_moving_window;
+
+    @FXML
     private TextArea text_mrssage;
 
     @FXML
@@ -134,6 +141,16 @@ public class Controller {
         listOfTables.setOnMouseExited(event->{
             listOfTables.setVisible(false);
         });
+        pane_for_moving_window.setOnMouseDragged(event->{
+            Main.main_stage.setX(event.getScreenX()-xoffset);
+            Main.main_stage.setY(event.getScreenY()-yoffset);
+
+        });
+        pane_for_moving_window.setOnMousePressed(event->{
+            xoffset=event.getSceneX();
+            yoffset=event.getSceneY();
+        });
+
         buttonViewTableOfNotes.setOnMouseExited(event -> {
             if (event.getSceneX() > buttonViewTableOfNotes.getTranslateX()+buttonViewTableOfNotes.getWidth()){
                 return;
