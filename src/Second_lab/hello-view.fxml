@@ -3,6 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,7 +22,7 @@
                </font>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="8.0" prefWidth="5.0" visible="false" />
-            <Button fx:id="buttonViewAllNote" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #262626;" text="view all note" textFill="WHITE">
+            <Button fx:id="buttonAction" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #262626;" text="action" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -60,18 +63,24 @@
             <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="7.0" visible="false" />
          </children>
       </VBox>
-      <VBox fx:id="VBoxviewAllNode" layoutX="150.0" layoutY="112.0" prefHeight="98.0" prefWidth="157.0" style="-fx-background-color: #262626;" visible="false">
+      <VBox fx:id="VBoxviewAllNode" layoutX="150.0" layoutY="112.0" prefHeight="98.0" prefWidth="158.0" style="-fx-background-color: #262626;" visible="false">
          <children>
             <Separator orientation="VERTICAL" prefHeight="5.0" prefWidth="0.0" visible="false" />
-            <Button fx:id="buttonAddTextNote1" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #262626;" text="transport to archive" textFill="WHITE">
+            <Button fx:id="buttonViewAllNote" mnemonicParsing="false" prefHeight="37.0" prefWidth="156.0" style="-fx-background-color: #262626;" text="view all notes" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="8.0" prefWidth="5.0" visible="false" />
+            <Button fx:id="buttonArchivePane" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #262626;" text="transport to archive" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Separator orientation="VERTICAL" prefHeight="8.0" prefWidth="5.0" visible="false" />
-            <Button fx:id="buttonAddFileNote1" mnemonicParsing="false" prefHeight="37.0" prefWidth="156.0" style="-fx-background-color: #262626;" text="export to file" textFill="WHITE">
+            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="7.0" visible="false" />
+            <Button fx:id="button_go_to_archive" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #262626;" text="archive" textFill="WHITE">
                <font>
-                  <Font size="16.0" />
+                  <Font size="15.0" />
                </font>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="7.0" visible="false" />
@@ -87,5 +96,47 @@
          </children>
       </Pane>
       <VBox fx:id="listOfTables" layoutX="150.0" layoutY="160.0" prefHeight="340.0" prefWidth="150.0" style="-fx-background-color: #262626;" visible="false" />
+      <Pane fx:id="pane_view_node" layoutX="308.0" layoutY="62.0" prefHeight="438.0" prefWidth="392.0" visible="false">
+         <children>
+            <TextArea fx:id="text_mrssage1" layoutX="33.0" layoutY="33.0" prefHeight="310.0" prefWidth="327.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <ImageView fx:id="button_right" fitHeight="62.0" fitWidth="69.0" layoutX="298.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@right.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="button_left" fitHeight="62.0" fitWidth="69.0" layoutX="33.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@right.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonArchive" layoutX="122.0" layoutY="367.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #262626;" text="to archive" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_to_main" layoutX="122.0" layoutY="367.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #262626;" text="to main list" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pane_adding_note" layoutX="308.0" layoutY="62.0" prefHeight="438.0" prefWidth="392.0" visible="false">
+         <children>
+            <TextArea fx:id="text_mrssage" layoutX="33.0" layoutY="33.0" prefHeight="310.0" prefWidth="327.0" promptText="Enter message">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="button_push" layoutX="35.0" layoutY="364.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="327.0" style="-fx-background-color: #262626;" text="push" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children></Pane>
    </children>
 </AnchorPane>
