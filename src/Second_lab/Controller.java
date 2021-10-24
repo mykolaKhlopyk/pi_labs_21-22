@@ -2,19 +2,19 @@ package com.example.note_system;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -231,12 +231,30 @@ public class Controller {
             }
         });
         buttonExit.setOnAction(event->{
-            try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path)))
-            {
-                oos.writeObject(Main.main_list_of_notes);
-            } catch (IOException e) {
-                e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Exit");
+            alert.setHeaderText("Save changes?");
+
+            ButtonType buttonYes = new ButtonType("Yes");
+            ButtonType buttonNo = new ButtonType("No");
+            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(buttonYes, buttonNo, buttonTypeCancel);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonYes){
+                try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path)))
+                {
+                    oos.writeObject(Main.main_list_of_notes);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (result.get() == buttonNo) {
+
+            }  else {
+                return;
             }
+
             System.exit(0);
         });
     }
