@@ -20,12 +20,14 @@ template<typename T>
 class Sparse_list
 {
 public:
-	Sparse_list() {
+	/*Sparse_list() {
 		this->root = nullptr;
 		this->n = 0;
-	}
-	Sparse_list(int n) :Sparse_list() {
+	}*/
+
+	Sparse_list(int n=0) {
 		this->n = n;
+		this->root = nullptr;
 	}
 	~Sparse_list() {
 		Node<T>* current = this->root;
@@ -77,11 +79,11 @@ public:
 			}
 			if (current->pos>index)
 			{
-				return 0;
+				return T();
 			}
 			current = current->next;
 		}
-		return 0;
+		return T();
 	}
 	std::vector<int> positions_by_element(int data) {
 		std::vector<int> result(0);
@@ -108,7 +110,7 @@ public:
 					continue;
 				}
 			}
-			std::cout << 0 << "\t";
+			std::cout << T() << "\t";
 		}
 		std::cout << "\n";
 	}
@@ -118,7 +120,7 @@ public:
 	Node<T>* get_root() {
 		return this->root;
 	}
-protected:
+private:
 	Node<T>* root;
 	int n;
 };
@@ -231,11 +233,11 @@ public:
 			}
 			if (current->pos > index)
 			{
-				return 0;
+				return T();
 			}
 			current = current->next;
 		}
-		return 0;
+		return T();
 	}
 	void print() {
 		Node<T>* current = this->root;

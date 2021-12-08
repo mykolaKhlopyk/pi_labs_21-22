@@ -1,0 +1,10 @@
+﻿  First_lab.cpp
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(41,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(73,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(193,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(227,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(21,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(28,4): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(32,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\First_lab.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  First_lab.vcxproj -> C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Debug\First_lab.exe

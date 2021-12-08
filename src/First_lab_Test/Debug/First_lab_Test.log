@@ -1,0 +1,41 @@
+﻿  First_lab_Test.cpp
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(39,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(71,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(191,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(225,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(19,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(26,4): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Unfair_Dice.h(30,3): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(51,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(52,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(53,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(54,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(55,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(93,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(94,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(95,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(96,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(97,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(161,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(162,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(191,1): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(190): message : while compiling class template member function 'void Sparse_matrix<std::string>::add_to_matrix(T,int,int)'
+          with
+          [
+              T=std::string
+          ]
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(122): message : see reference to function template instantiation 'void Sparse_matrix<std::string>::add_to_matrix(T,int,int)' being compiled
+          with
+          [
+              T=std::string
+          ]
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(113): message : see reference to class template instantiation 'Sparse_matrix<std::string>' being compiled
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(371,1): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Sparse_structure.h(363): message : while compiling class template member function 'Sparse_matrix<double> Sparse_matrix<double>::operator *(Sparse_matrix<double> &)'
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(91): message : see reference to function template instantiation 'Sparse_matrix<double> Sparse_matrix<double>::operator *(Sparse_matrix<double> &)' being compiled
+C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab_Test\First_lab_Test.cpp(72): message : see reference to class template instantiation 'Sparse_matrix<double>' being compiled
+  First_lab_Test.vcxproj -> C:\Users\User\pi_prog\pi_labs_21-22\src\First_lab\Debug\First_lab_Test.dll
